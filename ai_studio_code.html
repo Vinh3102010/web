@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOVINH - Minecraft Hub & Downloads</title>
+  <meta name="description" content="Clean and fast resource directory for Minecraft Schematics, Mods, and Resource Packs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: -0.01em; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.35); border-radius: 9999px; }
+    .dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen flex flex-col transition-colors selection:bg-blue-600 selection:text-white">
+
+  <!-- Ambient Light Glow -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[260px] bg-gradient-to-b from-blue-500/10 via-indigo-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-slate-200 dark:border-zinc-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-3">
+      
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div id="brandInitial" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-sky-500 flex items-center justify-center text-white font-black text-xl shadow-md shadow-blue-500/20 ring-1 ring-white/20 dark:ring-zinc-700/50">
+          D
+        </div>
+        <div class="flex flex-col">
+          <span id="siteNameDisplay" class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-tight">
+            DOVINH
+          </span>
+          <span id="siteSubDisplay" class="text-xs text-slate-500 dark:text-zinc-400 font-medium">
+            Minecraft Hub & Resources
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Socials -->
+        <div class="flex items-center gap-1.5">
+          <a id="tiktokLink" href="#" target="_blank" rel="noopener noreferrer" title="TikTok" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 dark:text-zinc-300 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 hover:text-black dark:hover:text-white transition-all border border-slate-200 dark:border-zinc-700">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M15.5 3c.5 2.6 2 4.1 4.5 4.4v3.2c-1.6.1-3.1-.4-4.5-1.3v6.5c0 4.1-2.9 6.2-6 6.2-3.4 0-5.8-2.2-5.8-5.4 0-3.5 2.8-5.6 6.2-5.6.4 0 .8 0 1.2.1v3.2c-.4-.1-.8-.2-1.2-.2-1.4 0-2.7.8-2.7 2.4 0 1.4 1.1 2.3 2.4 2.3 1.5 0 2.5-.9 2.5-2.8V3h3.4z"/></svg>
+          </a>
+          <a id="discordLink" href="#" target="_blank" rel="noopener noreferrer" title="Discord" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 dark:text-zinc-300 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all border border-slate-200 dark:border-zinc-700">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.5 4.7A16 16 0 0 0 15.6 3l-.5 1a14 14 0 0 0-6.2 0l-.5-1a16 16 0 0 0-3.9 1.7C2.1 8.3 1.4 12 1.7 15.6A15.8 15.8 0 0 0 6.5 18l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3c3.1 1.5 7.1 1.5 10.2 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.8 15.8 0 0 0 4.8-2.4c.4-4.2-.7-7.9-1.8-10.9zM8.5 13.8c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8zm7 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8z"/></svg>
+          </a>
+        </div>
+
+        <div class="h-6 w-px bg-slate-200 dark:bg-zinc-800"></div>
+
+        <!-- Profile -->
+        <div class="flex items-center gap-2">
+          <div class="text-right hidden md:block">
+            <div id="profileNameDisplay" class="font-extrabold tracking-tight leading-none text-sm text-blue-600">DOVINH</div>
+          </div>
+          <div class="relative group">
+            <img id="profileLogoDisplay" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-9 h-9 rounded-full object-cover ring-2 ring-blue-500/40 bg-slate-100 dark:bg-zinc-800" />
+            <button id="btnProfileEdit" class="hidden absolute -bottom-1 -right-1 bg-amber-500 hover:bg-amber-600 text-white rounded-full p-1 shadow-md transition-transform hover:scale-110">
+              ✏️
+            </button>
+          </div>
+        </div>
+
+        <div class="h-6 w-px bg-slate-200 dark:bg-zinc-800"></div>
+
+        <!-- Language Switcher -->
+        <button id="btnLang" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-200 transition-all border border-slate-200 dark:border-zinc-700">
+          🌐 <span id="langText">EN</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="btnTheme" class="p-2 rounded-xl text-slate-600 dark:text-zinc-300 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 border border-slate-200 dark:border-zinc-700 transition-all">
+          🌙
+        </button>
+
+        <!-- Owner Mode Toggle -->
+        <button id="btnOwner" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-zinc-400 bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 border border-slate-200 dark:border-zinc-700 transition-all">
+          <span id="ownerIcon">🔒</span>
+          <span id="ownerText" class="hidden sm:inline">Owner Mode</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 shrink-0 flex flex-col md:border-r border-slate-200/90 dark:border-zinc-800/80 bg-white/40 dark:bg-zinc-950/40 p-3 sm:p-5 md:min-h-[calc(100vh-4.5rem)]">
+      <div class="flex items-center justify-between mb-3 px-2">
+        <span id="catHeaderLabel" class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500">Categories</span>
+      </div>
+      <nav id="catNav" class="flex md:flex-col gap-1.5 overflow-x-auto pb-2 md:pb-0"></nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 min-w-0">
+      
+      <!-- Top Title & Search -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <h1 id="activeCatTitle" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">Schematica</h1>
+            <span id="activeCatCount" class="text-xs font-semibold text-slate-400 dark:text-zinc-500">0 items</span>
+          </div>
+          <p id="activeCatSub" class="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 mt-1">Browse all downloads and resources</p>
+        </div>
+
+        <div id="ownerActionsBar" class="hidden items-center gap-2">
+          <button id="btnClearAll" class="px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50">
+            🗑️ Clear All
+          </button>
+          <button id="btnAddNewItem" class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 shadow-sm transition-all">
+            + Add Item
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative mb-6">
+        <input id="searchInput" type="text" placeholder="Search schematics, mods, packs..." class="w-full pl-10 pr-10 py-3 rounded-2xl border border-slate-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-zinc-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all" />
+        <span class="absolute left-3.5 top-3.5 text-slate-400">🔍</span>
+      </div>
+
+      <!-- Item List Container -->
+      <div id="itemsContainer" class="space-y-3"></div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="p-10 sm:p-14 text-center rounded-3xl border border-slate-200/80 dark:border-zinc-800/80 bg-gradient-to-b from-white to-slate-50/50 dark:from-zinc-900/60 dark:to-zinc-950/60 shadow-xs">
+        <div class="w-16 h-16 mx-auto mb-4 relative flex items-center justify-center">
+          <svg class="w-14 h-14 drop-shadow" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,8 56,20 32,32 8,20" fill="#3b82f6" />
+            <polygon points="8,20 32,32 32,56 8,44" fill="#2563eb" />
+            <polygon points="32,32 56,20 56,44 32,56" fill="#1d4ed8" />
+          </svg>
+        </div>
+        <h2 id="emptyTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight mb-2">No items in this category</h2>
+        <p id="emptyDesc" class="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 max-w-md mx-auto mb-6">This section is clean and ready. Click below to add your links and downloads.</p>
+        
+        <div id="emptyButtons" class="flex flex-wrap items-center justify-center gap-3"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden p-3.5 rounded-xl shadow-lg border text-sm font-medium bg-zinc-900/90 border-zinc-700/60 text-white backdrop-blur-md"></div>
+
+  <!-- Item Modal -->
+  <div id="itemModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+    <div class="w-full max-w-lg bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl shadow-2xl p-6">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-zinc-800 mb-4">
+        <h3 id="itemModalTitle" class="text-lg font-bold">Add Item</h3>
+        <button id="closeItemModal" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form id="itemForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold mb-1">Category</label>
+          <select id="itemCatSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm"></select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">Title *</label>
+          <input id="itemTitle" type="text" required placeholder="e.g. Litematica 1.20.4" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">Download Link *</label>
+          <input id="itemUrl" type="url" required placeholder="https://..." class="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold mb-1">Button Label</label>
+            <input id="itemLabel" type="text" placeholder="Download .jar" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold mb-1">Tag / Version</label>
+            <input id="itemTag" type="text" placeholder="1.20.4 • Fabric" class="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">Image Thumbnail (Upload or URL)</label>
+          <div class="flex gap-2">
+            <input id="itemImgUpload" type="file" accept="image/*" class="text-xs" />
+            <input id="itemImgUrl" type="url" placeholder="https://..." class="flex-1 px-3 py-1 text-xs rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-3 border-t border-slate-100 dark:border-zinc-800">
+          <button type="button" id="cancelItemModal" class="px-4 py-2 rounded-xl text-xs font-semibold">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Owner Auth Modal -->
+  <div id="ownerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+    <div class="w-full max-w-sm bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl shadow-2xl p-6">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-zinc-800 mb-4">
+        <h3 class="text-base font-bold">🔐 Unlock Owner Mode</h3>
+        <button id="closeOwnerModal" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form id="ownerForm" class="space-y-4">
+        <input id="ownerPassInput" type="password" placeholder="Enter owner password (Vinh3102010)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm" />
+        <p id="ownerError" class="text-xs text-rose-500 hidden">Incorrect password.</p>
+        <div class="flex justify-end gap-2">
+          <button type="button" id="cancelOwnerModal" class="px-3 py-2 text-xs font-semibold">Close</button>
+          <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700">Unlock</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const defaultData = {
+      siteName: "DOVINH",
+      ownerPassword: "Vinh3102010",
+      profile: {
+        name: "DOVINH",
+        color: "#2563eb",
+        fontSize: "16",
+        logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80",
+        tiktok: "https://www.tiktok.com",
+        discord: "https://discord.gg"
+      },
+      categories: [
+        { id: "schematica", name: "Schematica", items: [] },
+        { id: "mods", name: "Mods", items: [] },
+        { id: "resource-packs", name: "Resource Pack", items: [] }
+      ]
+    };
+
+    let appData = JSON.parse(localStorage.getItem("vigerMenuData") || "null") || defaultData;
+    let isOwner = false;
+    let currentLang = "en";
+    let activeCat = "all";
+    let searchQuery = "";
+
+    const t = {
+      en: {
+        allCat: "All Categories",
+        searchPlaceholder: "Search schematics, mods, packs...",
+        emptyTitle: "No items in this category",
+        emptyDesc: "This section is clean and ready. Click below to add your links and downloads.",
+        addFirstItem: "Add First Item",
+        unlockOwner: "Unlock Owner Mode",
+        clearAllConfirm: "Delete all items in the menu?",
+        copied: "Link copied to clipboard!"
+      },
+      vi: {
+        allCat: "Tất cả danh mục",
+        searchPlaceholder: "Tìm kiếm schematica, mod, pack...",
+        emptyTitle: "Danh mục hiện đang trống",
+        emptyDesc: "Phần này đã được làm sạch và sẵn sàng. Hãy bấm bên dưới để thêm các liên kết của bạn.",
+        addFirstItem: "Thêm ô đầu tiên",
+        unlockOwner: "Mở khóa chủ sở hữu",
+        clearAllConfirm: "Bạn có chắc chắn muốn xóa toàn bộ các ô không?",
+        copied: "Đã sao chép liên kết!"
+      }
+    };
+
+    function save() {
+      localStorage.setItem("vigerMenuData", JSON.stringify(appData));
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+      setTimeout(() => el.classList.add("hidden"), 2500);
+    }
+
+    function renderHeader() {
+      document.getElementById("brandInitial").textContent = (appData.siteName || "D").charAt(0).toUpperCase();
+      document.getElementById("siteNameDisplay").textContent = appData.siteName || "DOVINH";
+      document.getElementById("profileNameDisplay").textContent = appData.profile.name || "DOVINH";
+      document.getElementById("profileNameDisplay").style.color = appData.profile.color || "#2563eb";
+      document.getElementById("profileNameDisplay").style.fontSize = (appData.profile.fontSize || 16) + "px";
+      document.getElementById("profileLogoDisplay").src = appData.profile.logo || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80";
+      document.getElementById("tiktokLink").href = appData.profile.tiktok || "#";
+      document.getElementById("discordLink").href = appData.profile.discord || "#";
+      document.getElementById("langText").textContent = currentLang.toUpperCase();
+      document.getElementById("ownerIcon").textContent = isOwner ? "🔓" : "🔒";
+      document.getElementById("ownerText").textContent = isOwner ? (currentLang === "vi" ? "Đã mở khóa" : "Owner Unlocked") : (currentLang === "vi" ? "Chủ sở hữu" : "Owner Mode");
+      document.getElementById("ownerActionsBar").classList.toggle("hidden", !isOwner);
+      document.getElementById("ownerActionsBar").classList.toggle("flex", isOwner);
+    }
+
+    function renderSidebar() {
+      const nav = document.getElementById("catNav");
+      nav.innerHTML = "";
+      
+      const totalCount = appData.categories.reduce((acc, c) => acc + c.items.length, 0);
+
+      const allBtn = document.createElement("button");
+      allBtn.className = "flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all shrink-0 text-left " + (activeCat === "all" ? "bg-blue-600 text-white shadow-sm" : "text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800");
+      allBtn.innerHTML = "<span>" + t[currentLang].allCat + "</span><span class='text-xs px-2 py-0.5 rounded-full font-bold'>" + totalCount + "</span>";
+      allBtn.onclick = () => { activeCat = "all"; renderItems(); renderSidebar(); };
+      nav.appendChild(allBtn);
+
+      appData.categories.forEach((cat) => {
+        const btn = document.createElement("button");
+        const isActive = activeCat === cat.id;
+        btn.className = "flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all shrink-0 text-left " + (isActive ? "bg-slate-900 text-white dark:bg-white dark:text-zinc-950 shadow-sm" : "text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800");
+        btn.innerHTML = "<span>" + cat.name + "</span><span class='text-xs opacity-75 font-semibold'>" + cat.items.length + "</span>";
+        btn.onclick = () => { activeCat = cat.id; renderItems(); renderSidebar(); };
+        nav.appendChild(btn);
+      });
+    }
+
+    function renderItems() {
+      let items = [];
+      let catName = "";
+
+      if (activeCat === "all") {
+        catName = t[currentLang].allCat;
+        appData.categories.forEach(c => c.items.forEach(it => items.push({ item: it, catId: c.id, catName: c.name })));
+      } else {
+        const found = appData.categories.find(c => c.id === activeCat);
+        if (found) {
+          catName = found.name;
+          found.items.forEach(it => items.push({ item: it, catId: found.id, catName: found.name }));
+        }
+      }
+
+      document.getElementById("activeCatTitle").textContent = catName;
+      document.getElementById("activeCatCount").textContent = items.length + " items";
+
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        items = items.filter(x => x.item.title.toLowerCase().includes(q) || (x.item.label && x.item.label.toLowerCase().includes(q)) || (x.item.tag && x.item.tag.toLowerCase().includes(q)));
+      }
+
+      const container = document.getElementById("itemsContainer");
+      const emptyState = document.getElementById("emptyState");
+      container.innerHTML = "";
+
+      if (items.length > 0) {
+        emptyState.classList.add("hidden");
+        items.forEach(({ item, catId, catName }) => {
+          const card = document.createElement("div");
+          card.className = "flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200/90 dark:border-zinc-800 hover:border-blue-400 transition-all";
+          
+          card.innerHTML = `
+            <a href="${item.url}" target="_blank" rel="noopener" class="flex items-center gap-3.5 min-w-0 flex-1">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100 dark:bg-zinc-800 shrink-0 border border-slate-200 dark:border-zinc-700 flex items-center justify-center">
+                ${item.image ? `<img src="${item.image}" class="w-full h-full object-cover" />` : '📦'}
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-baseline gap-2 mb-1 flex-wrap">
+                  <h3 class="font-bold text-base text-slate-900 dark:text-zinc-100 leading-tight">${item.title}</h3>
+                  ${item.tag ? `<span class="text-xs text-blue-600 dark:text-blue-400 font-semibold">${item.tag}</span>` : ''}
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 truncate font-medium">${item.label || item.url}</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-2 shrink-0 pt-2 sm:pt-0">
+              <button onclick="navigator.clipboard.writeText('${item.url}'); showToast(t[currentLang].copied)" class="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700">Copy</button>
+              <a href="${item.url}" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700">Download</a>
+              ${isOwner ? `<button onclick="deleteItem('${catId}', '${item.id}')" class="p-2 rounded-xl text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40">🗑️</button>` : ''}
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } else {
+        emptyState.classList.remove("hidden");
+        document.getElementById("emptyTitle").textContent = t[currentLang].emptyTitle;
+        document.getElementById("emptyDesc").textContent = t[currentLang].emptyDesc;
+        const btnBox = document.getElementById("emptyButtons");
+        btnBox.innerHTML = "";
+        
+        if (isOwner) {
+          const addBtn = document.createElement("button");
+          addBtn.className = "px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md";
+          addBtn.textContent = "+ " + t[currentLang].addFirstItem;
+          addBtn.onclick = () => openItemModal();
+          btnBox.appendChild(addBtn);
+        } else {
+          const unlockBtn = document.createElement("button");
+          unlockBtn.className = "px-5 py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 shadow-sm";
+          unlockBtn.textContent = "🔒 " + t[currentLang].unlockOwner;
+          unlockBtn.onclick = () => {
+            document.getElementById("ownerModal").classList.remove("hidden");
+            document.getElementById("ownerModal").classList.add("flex");
+          };
+          btnBox.appendChild(unlockBtn);
+        }
+      }
+    }
+
+    function deleteItem(catId, itemId) {
+      if (confirm("Delete this item?")) {
+        const cat = appData.categories.find(c => c.id === catId);
+        if (cat) {
+          cat.items = cat.items.filter(x => x.id !== itemId);
+          save();
+          renderItems();
+          renderSidebar();
+          showToast("Item deleted.");
+        }
+      }
+    }
+
+    function openItemModal() {
+      const sel = document.getElementById("itemCatSelect");
+      sel.innerHTML = "";
+      appData.categories.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c.id;
+        opt.textContent = c.name;
+        if (c.id === activeCat) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      document.getElementById("itemForm").reset();
+      document.getElementById("itemModal").classList.remove("hidden");
+      document.getElementById("itemModal").classList.add("flex");
+    }
+
+    document.getElementById("closeItemModal").onclick = () => {
+      document.getElementById("itemModal").classList.add("hidden");
+      document.getElementById("itemModal").classList.remove("flex");
+    };
+    document.getElementById("cancelItemModal").onclick = document.getElementById("closeItemModal").onclick;
+
+    document.getElementById("itemForm").onsubmit = (e) => {
+      e.preventDefault();
+      const targetCatId = document.getElementById("itemCatSelect").value;
+      const cat = appData.categories.find(c => c.id === targetCatId);
+      if (!cat) return;
+
+      const title = document.getElementById("itemTitle").value.trim();
+      const url = document.getElementById("itemUrl").value.trim();
+      const label = document.getElementById("itemLabel").value.trim();
+      const tag = document.getElementById("itemTag").value.trim();
+      const imgUrl = document.getElementById("itemImgUrl").value.trim();
+      const fileInput = document.getElementById("itemImgUpload");
+
+      const saveItemObj = (imgData) => {
+        cat.items.unshift({
+          id: "item-" + Date.now(),
+          title,
+          url,
+          label,
+          tag,
+          image: imgData || imgUrl
+        });
+        save();
+        document.getElementById("closeItemModal").click();
+        renderItems();
+        renderSidebar();
+        showToast("Item added successfully!");
+      };
+
+      if (fileInput.files && fileInput.files[0]) {
+        const r = new FileReader();
+        r.onload = () => saveItemObj(r.result);
+        r.readAsDataURL(fileInput.files[0]);
+      } else {
+        saveItemObj(imgUrl);
+      }
+    };
+
+    // Owner logic
+    document.getElementById("btnOwner").onclick = () => {
+      if (isOwner) {
+        isOwner = false;
+        renderHeader();
+        renderItems();
+        showToast("Locked Owner Mode");
+      } else {
+        document.getElementById("ownerModal").classList.remove("hidden");
+        document.getElementById("ownerModal").classList.add("flex");
+      }
+    };
+    document.getElementById("closeOwnerModal").onclick = () => {
+      document.getElementById("ownerModal").classList.add("hidden");
+      document.getElementById("ownerModal").classList.remove("flex");
+    };
+    document.getElementById("cancelOwnerModal").onclick = document.getElementById("closeOwnerModal").onclick;
+
+    document.getElementById("ownerForm").onsubmit = (e) => {
+      e.preventDefault();
+      const pass = document.getElementById("ownerPassInput").value;
+      if (pass === (appData.ownerPassword || "Vinh3102010")) {
+        isOwner = true;
+        document.getElementById("closeOwnerModal").click();
+        document.getElementById("ownerPassInput").value = "";
+        renderHeader();
+        renderItems();
+        showToast("Owner Mode Unlocked!");
+      } else {
+        document.getElementById("ownerError").classList.remove("hidden");
+      }
+    };
+
+    document.getElementById("btnAddNewItem").onclick = () => openItemModal();
+    document.getElementById("btnClearAll").onclick = () => {
+      if (confirm(t[currentLang].clearAllConfirm)) {
+        appData.categories.forEach(c => c.items = []);
+        save();
+        renderItems();
+        renderSidebar();
+        showToast("All items cleared.");
+      }
+    };
+
+    document.getElementById("btnLang").onclick = () => {
+      currentLang = currentLang === "en" ? "vi" : "en";
+      renderHeader();
+      renderSidebar();
+      renderItems();
+    };
+
+    document.getElementById("btnTheme").onclick = () => {
+      document.documentElement.classList.toggle("dark");
+    };
+
+    document.getElementById("searchInput").oninput = (e) => {
+      searchQuery = e.target.value;
+      renderItems();
+    };
+
+    renderHeader();
+    renderSidebar();
+    renderItems();
+  </script>
+</body>
+</html>
